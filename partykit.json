@@ -1,0 +1,4 @@
+{
+  "name": "rnlive-club",
+  "main": "src/lib/server/partykit.ts"
+}
