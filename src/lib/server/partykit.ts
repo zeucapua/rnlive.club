@@ -10,19 +10,40 @@ export default class RnLiveParty implements PartyServer {
   constructor(public party : Party) {}
 
   onConnect(connection : PartyConnection, context : PartyConnectionContext) {
-    this.party.broadcast(`[${this.party.id} (onConnect)] PARTY BROADCAST: ${connection.id} has joined room!`);
-    console.log("this.party.getConnections(): ");
-    for (const c of this.party.getConnections()) {
-      console.log(c.id);
-    }
+    const message = JSON.stringify({
+      type: "log",
+      content: `[${this.party.id} (onConnect)] PARTY BROADCAST: ${connection.id} has joined room!`
+    });
+    this.party.broadcast(message);
   }
 
   onMessage(message : string, connection : PartyConnection) {
-    this.party.broadcast(`[${this.party.id} (onMessage)] PARTY BROADCAST: ${message} [Connection ID: ${connection.id}]`); 
+    const message_data = JSON.parse(message);
+    switch (message_data.type) {
+      case "log": {
+        console.log(message_data.content);
+        break;
+      }
+
+      case "ping": {
+        const response = JSON.stringify({
+          type: "pong",
+          content: message_data.content
+        });
+
+        this.party.broadcast(response);
+        break;
+      }
+
+      default: {
+        console.log({ message_data });
+        break;
+      }
+    }
   }
 
   onClose(connection : PartyConnection) {
-    this.party.broadcast(`[${this.party.id} (onClose)] PARTY BROADCAST: ${connection.id} has left(?)`) 
+
   }
 }
 

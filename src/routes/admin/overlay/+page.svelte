@@ -5,8 +5,6 @@
 
   import { dev } from "$app/environment";
 
-  let name : string;
-  let chat : string;
   let party_messages : string[] = [];
 
   let room_id : string | undefined = $page.url.searchParams.get("room_id") ?? undefined;
@@ -38,36 +36,6 @@
       });
     }
   });
-
-  function sendToPartyServer(message : string) {
-    if (socket) {
-      const ping = JSON.stringify({
-        type: "ping",
-        content: message
-      });
-      socket.send(ping);
-    }
-  }
 </script>
-<h1 class="text-5xl font-bold">rnlive.club</h1>
 
-<p>
-  ROOM: 
-  {#if room_id}
-   {room_id} 
-  {:else}
-    Not in One
-  {/if}
-</p>
-
-<input type="text" placeholder="Enter name" bind:value={name} />
-<div>
-  <input type="text" placeholder="Say something" bind:value={chat} />
-  <button on:click={() => sendToPartyServer(`${name}: ${chat}!`)}>
-    Send
-  </button>
-</div>
-
-{#each party_messages as msg}
-  <p>{msg}</p>
-{/each}
+<p>Overlay</p>
