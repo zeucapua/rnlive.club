@@ -11,14 +11,28 @@ datasource db {
 }
 
 model User {
-  id String @id @unique
-
+  // needed for lucia auth
+  id           String    @id @unique
   auth_session Session[]
   key          Key[]
 
-  twitch_username String
+  // add custom AUTH attributes here, app.d.ts, getUserAttributes (lucia.ts), createUser (callback/+server.ts)
+  twitch_username String @unique
+
+  // refer to internal database models here
+  emotes Emote[]
 }
 
+// models for rnlive.club
+model Emote {
+  id     String  @id @default(cuid())
+  name   String
+  source String
+  User   User?   @relation(fields: [userId], references: [id])
+  userId String?
+}
+
+// DO NOT REMOVE: for Lucia auth session management
 model Session {
   id             String @id @unique
   user_id        String
