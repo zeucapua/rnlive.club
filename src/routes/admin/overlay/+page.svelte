@@ -21,6 +21,7 @@
   });
 
   socket.addEventListener("message", (event) => {
+    console.log({ event });
     const message_data = JSON.parse(event.data);
     switch (message_data.type) {
       case "log": {

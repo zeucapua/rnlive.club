@@ -12,11 +12,6 @@ export default class RnLiveParty implements PartyServer {
   onMessage(message : string, connection : PartyConnection) {
     const message_data = JSON.parse(message);
     switch (message_data.type) {
-      case "log": {
-        console.log(message_data.content);
-        break;
-      }
-
       case "ping": {
         const response = JSON.stringify({
           type: "pong",
