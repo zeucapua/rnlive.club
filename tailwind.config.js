@@ -2,7 +2,12 @@
 export default {
   content: ['./src/**/*.{html,js,svelte,ts}'],
   theme: {
-    extend: {}
+    extend: {
+      fontFamily: {
+        slice: ["Slice"],
+        jakarta: ["Plus-Jakarta-Sans"]
+      }
+    }
   },
   plugins: []
 };

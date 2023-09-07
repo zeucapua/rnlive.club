@@ -17,44 +17,51 @@
     );
   }
 </script>
+ 
+<main class="flex flex-col p-8 gap-8">
+  <h1 class="text-6xl font-slice tracking-widest">Admin</h1>
+  <button on:click={openOverlay} class="w-fit px-4 py-2 border border-black rounded-md hover:font-bold hover:bg-black hover:text-white transition-all duration-300">Open Overlay</button>
 
-<p>Admin</p>
-<button on:click={openOverlay}>Open Overlay</button>
+  <section class="flex flex-col gap-4 rounded-md p-8 bg-pink-400">
+    <h3 class="text-3xl font-bold">Create a new emote</h3>
+    <form method="POST" action="/admin?/createEmote" use:enhance class="flex w-fit gap-8 justify-between">
+      <input name="emote_name" type="text" placeholder="peepoHug" class="border border-neutral-300 px-4 py-2 rounded-md focus:border-black focus:ring focus:ring-pink-400"/>
+      <input name="emote_source" type="url" placeholder="example.com/image.gif" class="border border-neutral-300 px-4 py-2 rounded-md focus:border-black focus:ring focus:ring-pink-400"/>
+      <button class="px-4 py-2 border border-black rounded-md hover:font-bold hover:bg-black hover:text-white transition-all duration-300">Create</button>
+    </form>
+  </section>
 
-<form method="POST" action="/admin?/createEmote" use:enhance>
-  <input name="emote_name" type="text" placeholder="peepoHug" />
-  <input name="emote_source" type="url" placeholder="example.com/image.gif" />
-  <button>Create</button>
-</form>
+  {#if form?.emotes}
 
-{#if form?.emotes}
-  {#if form.emotes.length != 0}
-    {#each form.emotes as emote}
-      <div>
-        <img src={emote.source} alt={emote.name} />
-        <form method="POST" action="/admin?/deleteEmote">
-          <input name="emote_id" type="hidden" value={emote.id} />
-          <button>Delete</button>
-        </form>
-      </div>
-    {/each}
+    {#if form.emotes.length != 0}
+      {#each form.emotes as emote}
+        <div>
+          <img src={emote.source} alt={emote.name} />
+          <form method="POST" action="/admin?/deleteEmote">
+            <input name="emote_id" type="hidden" value={emote.id} />
+            <button>Delete</button>
+          </form>
+        </div>
+      {/each}
+    {:else}
+      <p>No emotes yet :(</p>
+    {/if}
+
   {:else}
-    <p>Create a new emote</p>
-  {/if}
-{:else}
 
-  {#if emotes.length != 0}
-    {#each emotes as emote}
-      <div>
-        <img src={emote.source} alt={emote.name} />
-        <form method="POST" action="/admin?/deleteEmote" use:enhance>
-          <input name="emote_id" type="hidden" value={emote.id} />
-          <button>Delete</button>
-        </form>
-      </div>
-    {/each}
-  {:else}
-    <p>Create a new emote</p>
-  {/if}
+    {#if emotes.length != 0}
+      {#each emotes as emote}
+        <div>
+          <img src={emote.source} alt={emote.name} />
+          <form method="POST" action="/admin?/deleteEmote" use:enhance>
+            <input name="emote_id" type="hidden" value={emote.id} />
+            <button>Delete</button>
+          </form>
+        </div>
+      {/each}
+    {:else}
+      <p>Create a new emote</p>
+    {/if}
 
-{/if}
+  {/if}
+</main>

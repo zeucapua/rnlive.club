@@ -6,8 +6,6 @@ export const GET = async ({ cookies, locals, url }) => {
   const state = url.searchParams.get("state");
   const code = url.searchParams.get("code");
 
-  console.log({ code });
-
   if (!stored_state || !state || stored_state !== state || !code) {
     return new Response(null, { status: 400 });
   }
@@ -23,6 +21,7 @@ export const GET = async ({ cookies, locals, url }) => {
       const user = await createUser({
         attributes: {
           twitch_username: twitchUser.login,
+          avatar: twitchUser.profile_image_url
         }
       });
 

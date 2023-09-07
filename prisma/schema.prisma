@@ -18,6 +18,7 @@ model User {
 
   // add custom AUTH attributes here, app.d.ts, getUserAttributes (lucia.ts), createUser (callback/+server.ts)
   twitch_username String @unique
+  avatar          String
 
   // refer to internal database models here
   emotes Emote[]

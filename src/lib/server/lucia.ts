@@ -14,7 +14,8 @@ export const auth = lucia({
 
   getUserAttributes: (data) => {
     return { 
-      twitch_username: data.twitch_username
+      twitch_username: data.twitch_username,
+      avatar: data.avatar
     }
   }
 });

@@ -1,3 +1,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+  font-family: Slice;
+  src: url("/MBASliceMono-Regular.woff")
+}
+
+@font-face {
+  font-family: Plus-Jakarta-Sans;
+  src: url("/PlusJakartaSans-VariableFont_wght.ttf");
+}
