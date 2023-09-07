@@ -8,6 +8,9 @@
 
 {#if user}
   <a href="/admin">{user.twitch_username}</a>
+  <form method="POST" action="/?/logout">
+    <button>Logout</button>
+  </form>
 {:else}
   <a href="/auth/twitch">Sign in with Twitch</a>
 {/if}

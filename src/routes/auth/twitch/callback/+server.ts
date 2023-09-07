@@ -6,6 +6,8 @@ export const GET = async ({ cookies, locals, url }) => {
   const state = url.searchParams.get("state");
   const code = url.searchParams.get("code");
 
+  console.log({ code });
+
   if (!stored_state || !state || stored_state !== state || !code) {
     return new Response(null, { status: 400 });
   }
@@ -15,6 +17,8 @@ export const GET = async ({ cookies, locals, url }) => {
     const getUser = async () => {
       const existing_user = await getExistingUser();
       if (existing_user) { return existing_user; }
+
+      console.log({ twitchUser });
 
       const user = await createUser({
         attributes: {
