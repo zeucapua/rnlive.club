@@ -9,14 +9,6 @@ import type {
 export default class RnLiveParty implements PartyServer {
   constructor(public party : Party) {}
 
-  onConnect(connection : PartyConnection, context : PartyConnectionContext) {
-    const message = JSON.stringify({
-      type: "log",
-      content: `[${this.party.id} (onConnect)] PARTY BROADCAST: ${connection.id} has joined room!`
-    });
-    this.party.broadcast(message);
-  }
-
   onMessage(message : string, connection : PartyConnection) {
     const message_data = JSON.parse(message);
     switch (message_data.type) {
