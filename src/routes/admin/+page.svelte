@@ -1,5 +1,6 @@
 <script lang="ts">
   import { enhance } from "$app/forms";
+  import { dev } from "$app/environment";
   import type { ActionData, LayoutData } from "../$types";
 
   export let data : LayoutData;
@@ -7,9 +8,18 @@
   const streamer = data.streamer;
 
   let emotes = streamer.emotes;
+
+  function openOverlay() {
+    window.open(
+      (dev ? "http://localhost:5173" : "https://rnlive-club.vercel.app") + "/admin/overlay",
+      "Overlay | rnlive.club",
+      "width=1920,height=1080,popup"
+    );
+  }
 </script>
 
 <p>Admin</p>
+<button on:click={openOverlay}>Open Overlay</button>
 
 <form method="POST" action="/admin?/createEmote" use:enhance>
   <input name="emote_name" type="text" placeholder="peepoHug" />
