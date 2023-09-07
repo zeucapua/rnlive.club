@@ -13,17 +13,6 @@
       host: dev ? "localhost:1999" : `https://rnlive-club.zeucapua.partykit.dev/party/${user_info.id}`,
       room: user_info.id 
     });
-
-    socket.addEventListener("message", (event) => {
-      console.log({ event });
-      const message_data = JSON.parse(event.data);
-      console.log({ message_data });
-      switch (message_data.type) {
-        default: {
-          console.log("DEFAULT:", event.data);
-        }
-      }
-    });
   });
 
   function sendToPartyServer(message : string) {
