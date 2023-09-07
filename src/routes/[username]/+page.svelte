@@ -10,7 +10,7 @@
 
   onMount(() => {
     socket = new PartySocket({
-      host: dev ? "localhost:1999" : `https://rnlive-club.zeucapua.partykit.dev/party/${room_id}`,
+      host: dev ? "localhost:1999" : `https://rnlive-club.zeucapua.partykit.dev/party/${user_info.id}`,
       room: user_info.id 
     });
 
