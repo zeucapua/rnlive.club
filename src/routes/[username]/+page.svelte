@@ -15,12 +15,10 @@
     });
 
     socket.addEventListener("message", (event) => {
+      console.log({ event });
       const message_data = JSON.parse(event.data);
+      console.log({ message_data });
       switch (message_data.type) {
-        case "log": {
-          console.log("PARTY:", message_data.content);
-          break;
-        }
         default: {
           console.log("DEFAULT:", event.data);
         }
