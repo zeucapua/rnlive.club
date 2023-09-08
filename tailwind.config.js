@@ -9,5 +9,8 @@ export default {
       }
     }
   },
-  plugins: []
+  daisyui: {
+    themes: ["synthwave"]
+  },
+  plugins: [require("daisyui")]
 };

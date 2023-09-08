@@ -6,7 +6,6 @@
   import type { LayoutData } from "../$types";
 
   import { dev } from "$app/environment";
-    import Layout from "../../+layout.svelte";
   export let data : LayoutData;
   
   let sources = data.streamer?.emotes;
@@ -52,7 +51,7 @@
 </script>
 
 <svelte:window bind:innerWidth={width} bind:innerHeight={height} />
-<div class="relative" style:width={width + "px"} style:height={height + "px"}>
+<div class="relative bg-none" style:width={width + "px"} style:height={height + "px"}>
   {#each emotes as e}
     {#if !e.fading}
       <img
