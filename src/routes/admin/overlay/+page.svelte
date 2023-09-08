@@ -8,25 +8,29 @@
   import { dev } from "$app/environment";
   export let data : LayoutData;
   
+  // get emoteName's and their source URLs
   let sources = data.streamer?.emotes;
+
+  // keep track of the emotes being displayed
   let emotes : { source: string, fading: boolean }[] = [];
 
   let width : number;
   let height : number;
 
+  // 'socket' is used to connect to the party from '/lib/server/partykit.ts'
   const socket = new PartySocket({
+    // 'localhost:1999' is the host URL to connect to when running 'npx partykit dev' 
+    // '<party-name>.<username>.partykit.dev/party/:id' will be live to connect to after running 'npx partykit deploy'
     host: dev ? "localhost:1999" : `https://rnlive-club.zeucapua.partykit.dev/party/${$page.data.user.userId}`,
     room: $page.data.user.userId
   });
 
+  // listen to party's broadcasts (this.party.broadcast) from server
   socket.addEventListener("message", (event) => {
-    console.log({ event });
+    // from server (/lib/server/partykit.ts): { type: 'pong', content: 'emoteName' }
     const message_data = JSON.parse(event.data);
+
     switch (message_data.type) {
-      case "log": {
-        console.log("PARTY:", message_data.content);
-        break;
-      }
       case "pong": {
         displayEmote(message_data.content);
         break;
@@ -40,9 +44,16 @@
   async function displayEmote(name : string) {
     for (const s of sources) {
       if (s.name === name) {
+        // create emote with url
         let e = { source: s.source, fading: false };
+
+        // add to list that's rendered below
         emotes = [...emotes, e];
+
+        // wait a tick
         await tick();
+
+        // make fading true to trigger out:transition
         emotes[emotes.indexOf(e)].fading = true;
         break;
       }

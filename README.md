@@ -1,38 +1,31 @@
-# create-svelte
+# rnlive.club
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
+A streamer's toolbox, focused on live interactions and audience support.
 
-## Creating a project
+*Currently a Build in Progress*
 
-If you're seeing this, you've probably already done this step. Congrats!
+See it in action: 
 
-```bash
-# create a new project in the current directory
-npm create svelte@latest
+- [rnlive.club](https://rnlive-club.vercel.app)
+- [Overview Blog (TBD)](https://thethinks.vercel.app)
+- [Showcase Video (TBD)](https://youtube.com)
 
-# create a new project in my-app
-npm create svelte@latest my-app
-```
+## Notes
 
-## Developing
+This repo is annotated with comments, made to be understandable as much as possible.
+For this project, the main files to look at implement [PartyKit](https://partykit.io)
+to create the live reaction feature.
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+- [lib/server/partykit.ts](https://github.com/zeucapua/rnlive.club/blob/master/src/lib/server/partykit.ts)
+- [/admin/overlay/+page.svelte](https://github.com/zeucapua/rnlive.club/blob/master/src/routes/admin/overlay/%2Bpage.svelte)
+- [/[username]/+page.svelte](https://github.com/zeucapua/rnlive.club/blob/master/src/routes/%5Busername%5D/%2Bpage.svelte)
 
-```bash
-npm run dev
+## Built with...
 
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
-
-## Building
-
-To create a production version of your app:
-
-```bash
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+- [SvelteKit](https://kit.svelte.dev): JS Meta Framework
+- [PartyKit](https://partykit.io): Multiplayer platform (Websockets)
+- [Lucia](https://lucia-auth.com): Authentication w Twitch OAuth
+- [Prisma](https://prisma.io): Database ORM
+- [TailwindCSS](https://tailwindcss.com): Styling
+- [DaisyUI](https://daisyui.com): TailwindCSS component library
+- [Vercel](https://vercel.com): Site deployment

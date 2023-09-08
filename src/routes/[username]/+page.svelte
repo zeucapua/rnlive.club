@@ -1,18 +1,15 @@
 <script lang="ts">
-  import { onMount } from 'svelte';
   import PartySocket from "partysocket";
   import { dev } from '$app/environment';
 
   export let data;
   const user_info = data.user_info;
 
-  let socket : PartySocket;
-
-  onMount(() => {
-    socket = new PartySocket({
-      host: dev ? "localhost:1999" : `https://rnlive-club.zeucapua.partykit.dev/party/${user_info.id}`,
-      room: user_info.id 
-    });
+  const socket = new PartySocket({
+    // 'localhost:1999' is the host URL to connect to when running 'npx partykit dev' 
+    // '<party-name>.<username>.partykit.dev/party/:id' will be live to connect to after running 'npx partykit deploy'
+    host: dev ? "localhost:1999" : `https://rnlive-club.zeucapua.partykit.dev/party/${user_info.id}`,
+    room: user_info.id 
   });
 
   function sendToPartyServer(message : string) {
@@ -21,6 +18,8 @@
         type: "ping",
         content: message
       });
+
+      // server can listen to this via 'onMessage' function
       socket.send(ping);
     }
   }

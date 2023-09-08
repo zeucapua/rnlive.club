@@ -8,6 +8,7 @@ export const actions = {
       throw redirect(303, "/");
     }
 
+    // get data from <form> tag
     const form_data = await request.formData();
     const emote_name = form_data.get("emote_name");
     const emote_source = form_data.get("emote_source");

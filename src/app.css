@@ -1,7 +1,10 @@
+/* import to use TailwindCSS */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+/* import to use fonts, files stored in /static folder */
+/* see tailwind.config.js to use these with 'font-[name]' */
 @font-face {
   font-family: Slice;
   src: url("/MBASliceMono-Regular.woff")

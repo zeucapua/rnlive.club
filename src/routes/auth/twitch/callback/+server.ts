@@ -1,6 +1,7 @@
 import { auth, twitch_auth } from "$lib/server/lucia";
 import { OAuthRequestError } from "@lucia-auth/oauth";
 
+// see https://lucia-auth.com/guidebook/github-oauth/sveltekit for a detailed explanation
 export const GET = async ({ cookies, locals, url }) => {
   const stored_state = cookies.get("twitch_oauth_state");
   const state = url.searchParams.get("state");

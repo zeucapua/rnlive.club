@@ -10,6 +10,7 @@ declare global {
 		// interface Platform {}
 	};
 
+  // important for Lucia types
   namespace Lucia {
     type Auth = import("$lib/server/lucia").Auth;
     type DatabaseUserAttributes = {
