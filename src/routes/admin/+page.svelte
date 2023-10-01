@@ -11,7 +11,7 @@
 
   function openOverlay() {
     window.open(
-      (dev ? "http://localhost:5173" : "https://rnlive-club.vercel.app") + "/admin/overlay",
+      (dev ? "http://localhost:5173" : "https://rnlive.club") + "/admin/overlay",
       "Overlay | rnlive.club",
       "width=1920,height=1080,popup"
     );
