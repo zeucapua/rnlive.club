@@ -23,7 +23,7 @@ export const auth = lucia({
 export const twitch_auth = twitch(auth, {
   clientId: TWITCH_CLIENT_ID,
   clientSecret: TWITCH_CLIENT_SECRET,
-  redirectUri: (dev ? "http://localhost:5173/auth/twitch/callback" : "https://rnlive-club.vercel.app/auth/twitch/callback")
+  redirectUri: (dev ? "http://localhost:5173/auth/twitch/callback" : "https://rnlive.club/auth/twitch/callback")
 });
 
 export type Auth = typeof auth;
