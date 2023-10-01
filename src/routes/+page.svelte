@@ -8,7 +8,7 @@
       <div class="my-4 badge badge-outline badge-secondary py-4">Build In Progress</div>
       <h1 class="text-6xl font-bold">Audience Interactions to the Next Level</h1>
       <p class="py-6 text-xl">
-        Live reactions. Custom donations. Built-in "Link in Bio". All for you, for free!
+        Live reactions. Easy & Free.
       </p>
       {#if $page.data.user}
         <a href="/admin" class="btn btn-primary">Go to Dashboard</a>
