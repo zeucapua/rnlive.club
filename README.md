@@ -2,12 +2,10 @@
 
 A streamer's toolbox, focused on live interactions and audience support.
 
-*Currently a Build in Progress*
-
 See it in action: 
 
 - [rnlive.club](https://rnlive-club.vercel.app)
-- [Overview Blog (TBD)](https://thethinks.vercel.app)
+- [Overview Blog](https://thoughts.zeu.dev/blog/rnlive-partykit)
 - [Showcase Video (TBD)](https://youtube.com)
 
 ## Notes
